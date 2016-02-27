@@ -6,6 +6,17 @@ const
 type
   array1d = Array[1..N] of Integer;
 
+{ Start pf procedure switchElements }
+procedure switchElements(var el1, el2 : Integer);
+  var
+    temp : Integer;
+
+  begin
+    temp := el1;
+    el1 := el2;
+    el2 := temp;
+  end;
+
 { Start of procedure fillArray }
 procedure fillArray(var arrFill : array1d);
   var
@@ -50,9 +61,7 @@ procedure bubbleSort(var sortArray : array1d);
     for i := 1 to N do begin
       for j := 1 to N-1 do begin
         if sortArray[j] > sortArray[j+1] then begin
-          temp := sortArray[j];
-          sortArray[j] := sortArray[j+1];
-          sortArray[j+1] := temp;
+          switchElements(sortArray[j], sortArray[j+1]);
         end;
       end;
     end;
