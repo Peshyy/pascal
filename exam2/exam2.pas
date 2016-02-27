@@ -5,6 +5,7 @@ const
 
 type
   array1d = Array[1..N] of Integer;
+  textFile = Text;
 
 { Start of procedure fillArray }
 procedure fillArray(var arrFill : array1d);
@@ -31,7 +32,7 @@ procedure listArray(arrList : array1d);
 
   begin
     WriteLn('Array elements:');
-    
+
     for i := 1 to N do begin
       Write(arrList[i], ' ');
     end;
@@ -41,7 +42,14 @@ procedure listArray(arrList : array1d);
   end;
 { End of procedure listArray }
 
+{
+  TODO:
+  - Insert an array from a text file
+  - Check if the array elements are sorted in descending order
+  - Are there any three identical elements with equal values
+    in the array and counts how many are they
+}
 
 begin
 
-end
+end.
