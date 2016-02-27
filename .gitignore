@@ -3,8 +3,8 @@
 #################
 
 # Pascal compiled programs and options
-*.exe
-*.o
+*/*.exe
+*/*.o
 
 #############
 ## Windows detritus
