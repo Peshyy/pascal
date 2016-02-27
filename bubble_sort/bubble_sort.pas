@@ -18,7 +18,6 @@ procedure fillArray(var arrFill : array1d);
 
     for i := 1 to N do begin
       arrFill[i] := Random(1000);
-      //WriteLn('Random number #', i, ' is ', arrFill[i]);
     end;
 
     WriteLn();
@@ -35,6 +34,8 @@ procedure listArray(arr : array1d);
     for i := 1 to N do begin
       Write(arr[i], ' ');
     end;
+
+    WriteLn();
     WriteLn();
   end;
 { End of procedure listArray }
@@ -45,15 +46,20 @@ procedure bubbleSort(var sortArray : array1d);
     i, j, temp : Integer;
 
   begin
-    for i := 1 to N-1 do begin
-      for j := i+1 to N do begin
+    WriteLn('Sorting array...');
+    for i := 1 to N do begin
+      for j := 1 to N-1 do begin
         if sortArray[j] > sortArray[j+1] then begin
-          temp := sortArray[i];
+          temp := sortArray[j];
           sortArray[j] := sortArray[j+1];
           sortArray[j+1] := temp;
         end;
       end;
     end;
+
+    WriteLn('Done sorting array!');
+
+    WriteLn();
   end;
 { End of procedure bubbleSort }
 
@@ -65,5 +71,7 @@ begin
   listArray(array_of_elements);
   bubbleSort(array_of_elements);
   listArray(array_of_elements);
+
+  Write('Press <Enter> to close the program...');
   ReadLn();
 end.
