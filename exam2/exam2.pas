@@ -18,7 +18,7 @@ procedure fileInput(var fIn : fnIn);
 
     Assign(fIn, fName);
   end;
-{ End of procedure fileInput}
+{ End of procedure fileInput }
 
 { Start of procedure fillArray }
 procedure fillArray(var fIn : fnIn; var arr : array1d);
