@@ -116,14 +116,6 @@ procedure closeFile(var fIn : fnIn);
   end;
 { End of procedure closeFile }
 
-{
-  TODO:
-  + Insert an array from a text file
-  + Check if the array elements are sorted in descending order
-  - Are there any three identical elements with equal values
-    in the array and counts how many are they
-}
-
 var
   elements : array1d;
   fileOut : fnIn;
