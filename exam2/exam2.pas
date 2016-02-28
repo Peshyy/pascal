@@ -5,10 +5,10 @@ const
 
 type
   array1d = Array[1..N] of Integer;
-  textFile = Text;
+  fnIn = TextFile;
 
 { Start of procedure fillArray }
-procedure fillArray(var arrFill : array1d);
+{procedure fillArray(fileIn : textFile);
   var
     i : Integer;
 
@@ -18,11 +18,11 @@ procedure fillArray(var arrFill : array1d);
     Randomize;
 
     for i := 1 to N do begin
-      arrFill[i] := Random(1000);
+      fileIn[i] := Random(1000);
     end;
 
     WriteLn();
-  end;
+  end;}
 { End of procedure fillArray }
 
 { Start of procedure listArray }
@@ -50,6 +50,18 @@ procedure listArray(arrList : array1d);
     in the array and counts how many are they
 }
 
+var
+  elements : array1d;
+  fileOut : fnIn;
+  i, j : Integer;
+
 begin
+  Assign(fileOut, 'file.txt');
+  Reset(fileOut);
+
+  for i := 1 to N do begin
+    ReadLn(fileOut, j);
+    WriteLn(j);
+  end;
 
 end.
