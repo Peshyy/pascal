@@ -5,24 +5,37 @@ const
 
 type
   array1d = Array[1..N] of Integer;
-  fnIn = TextFile;
+  fnIn = Text;
+
+{ Start of procedure fileInput }
+procedure fileInput(var fIn : fnIn);
+  var
+    fName : String;
+
+  begin
+    Write('Enter file name: ');
+    ReadLn(fName);
+
+    Assign(fIn, fName);
+
+    WriteLn();
+  end;
+{ End of procedure fileInput}
 
 { Start of procedure fillArray }
-{procedure fillArray(fileIn : textFile);
+procedure fillArray(var fIn : fnIn; var arr : array1d);
   var
     i : Integer;
 
   begin
-    WriteLn('Filling array elements...');
-
-    Randomize;
+    Reset(fIn);
 
     for i := 1 to N do begin
-      fileIn[i] := Random(1000);
+      ReadLn(fIn, arr[i]);
     end;
 
     WriteLn();
-  end;}
+  end;
 { End of procedure fillArray }
 
 { Start of procedure listArray }
@@ -56,8 +69,9 @@ var
   i, j : Integer;
 
 begin
-  Assign(fileOut, 'file.txt');
-  Reset(fileOut);
+  fileInput(fileOut);
+  fillArray(fileOut, elements);
+  listArray(elements); { Elements aren't filled in }
 
   for i := 1 to N do begin
     ReadLn(fileOut, j);
