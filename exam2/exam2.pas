@@ -17,8 +17,6 @@ procedure fileInput(var fIn : fnIn);
     ReadLn(fName);
 
     Assign(fIn, fName);
-
-    WriteLn();
   end;
 { End of procedure fileInput}
 
@@ -55,10 +53,73 @@ procedure listArray(arrList : array1d);
   end;
 { End of procedure listArray }
 
+{ Start of function descArray }
+function descArray(arr : array1d):Boolean;
+  var
+    i : Integer;
+    result : Boolean;
+
+  begin
+    result := true;
+
+    for i := 1 to N do begin
+      if arr[i] < arr[i+1] then begin
+        result := false;
+      end;
+    end;
+
+    descArray := result;
+
+    if result = true then begin
+      WriteLn('Array elements are sorted in descending order');
+    end else begin
+      WriteLn('Array elements are not sorted in descending order');
+    end;
+
+    WriteLn();
+  end;
+{ End of function descArray }
+
+{ Start of procedure tripleEl }
+procedure tripleEl(arr : array1d);
+  var
+    i, j, k : Integer;
+    result : Integer;
+
+  begin
+    result := 0;
+
+    for i := 1 to N do begin
+      for j := i+1 to N do begin
+        for k := j+1 to N do begin
+          if (arr[i] = arr[j]) and (arr[j] = arr[k]) then begin
+            result := result+1;
+          end;
+        end;
+      end;
+    end;
+
+    if result <> 0 then begin
+      WriteLn('There are ', result, ' number of triple equally valued elements');
+    end else begin
+      WriteLn('there are no triple equally valued elements');
+    end;
+
+    WriteLn();
+  end;
+{ End of procedure tripleEl }
+
+{ Start of procedure closeFile }
+procedure closeFile(var fIn : fnIn);
+  begin
+    Close(fIn);
+  end;
+{ End of procedure closeFile }
+
 {
   TODO:
-  - Insert an array from a text file
-  - Check if the array elements are sorted in descending order
+  + Insert an array from a text file
+  + Check if the array elements are sorted in descending order
   - Are there any three identical elements with equal values
     in the array and counts how many are they
 }
@@ -66,16 +127,15 @@ procedure listArray(arrList : array1d);
 var
   elements : array1d;
   fileOut : fnIn;
-  i, j : Integer;
 
 begin
   fileInput(fileOut);
   fillArray(fileOut, elements);
-  listArray(elements); { Elements aren't filled in }
+  listArray(elements);
+  descArray(elements);
+  tripleEl(elements);
+  closeFile(fileOut);
 
-  for i := 1 to N do begin
-    ReadLn(fileOut, j);
-    WriteLn(j);
-  end;
-
+  Write('Press <Enter> to close the program...');
+  ReadLn();
 end.
