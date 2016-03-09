@@ -48,12 +48,12 @@ procedure insertionSort(var arrIn : array1d);
       valueToInsert := arrIn[i];
       holePosition := i;
 
-      while ((holePosition > 1) and (arrIn[holePosition - 1] > valueToInsert)) do begin
+      while (holePosition > 1) and (arrIn[holePosition - 1] > valueToInsert) do begin
         arrIn[holePosition] := arrIn[holePosition - 1];
         holePosition := holePosition-1;
       end;
 
-      if (holePosition <> i) then begin
+      if holePosition <> i then begin
         arrIn[holePosition] := valueToInsert;
       end;
     end;
