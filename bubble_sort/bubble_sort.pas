@@ -16,6 +16,7 @@ procedure switchElements(var el1, el2 : Integer);
     el1 := el2;
     el2 := temp;
   end;
+{ End of procedure switchElements }
 
 { Start of procedure fillArray }
 procedure fillArray(var arrFill : array1d);
