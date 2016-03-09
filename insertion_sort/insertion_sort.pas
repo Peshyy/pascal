@@ -43,18 +43,24 @@ procedure insertionSort(var arrIn : array1d);
     i : Integer;                            // Loop variable
 
   begin
+    WriteLn('Sorting array...');
     for i := 2 to N do begin
       valueToInsert := arrIn[i];
       holePosition := i;
 
-      while ((holePosition > 1) and (arrIn[i-1] > valueToInsert)) do begin
+      while ((holePosition > 1) and (arrIn[holePosition - 1] > valueToInsert)) do begin
         arrIn[holePosition] := arrIn[holePosition - 1];
         holePosition := holePosition-1;
       end;
 
-      arrIn[holePosition] := valueToInsert;
-
+      if (holePosition <> i) then begin
+        arrIn[holePosition] := valueToInsert;
+      end;
     end;
+
+    WriteLn('Done sorting array!');
+
+    WriteLn();
   end;
 { End of procedure insertionSort }
 
@@ -82,4 +88,7 @@ begin
   listArray(array1);
   insertionSort(array1);
   listArray(array1);
+
+  Write('Press <Enter> to close the program...');
+  ReadLn();
 end.
